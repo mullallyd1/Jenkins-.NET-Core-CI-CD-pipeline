@@ -46,7 +46,7 @@ pipeline {
         }   
         stage('Contrast Scan'){
              steps{
-               sh 'contrast-cli  --scan WebApplication/bin/WebApplication.zip --api_key "tN068mjN8xtZPyIHB5jXPg8rm1hRDxxE" --authorization "ZGF2aWQubXVsbGFsbHlAY29udHJhc3RzZWN1cml0eS5jb206OU1PTDNPWlpWUEg1MUxLSw==" --organization_id "c5f79c46-7c74-45a0-b4c4-565da52827fa" --host "teamserver-staging.contsec.com" --project_name DavidMNetCorePipeline1 --language DOTNET --wait_for_scan'
+               sh 'contrast-cli  --scan ./WebApplication/bin/WebApplication.zip --api_key "tN068mjN8xtZPyIHB5jXPg8rm1hRDxxE" --authorization "ZGF2aWQubXVsbGFsbHlAY29udHJhc3RzZWN1cml0eS5jb206OU1PTDNPWlpWUEg1MUxLSw==" --organization_id "c5f79c46-7c74-45a0-b4c4-565da52827fa" --host "teamserver-staging.contsec.com" --project_name DavidMNetCorePipeline1 --language DOTNET --wait_for_scan'
              }
         }
     }
