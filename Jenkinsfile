@@ -35,8 +35,19 @@ pipeline {
                        kill -9 $pid
                done'''
                sh 'cd WebApplication/bin/Release/netcoreapp3.1/publish/'
-               sh 'nohup dotnet WebApplication.dll --urls="http://104.128.91.189:9090" --ip="104.128.91.189" --port=9090 --no-restore > /dev/null 2>&1 &'
+               sh 'nohup dotnet WebApplication.dll --urls="http://127.0.0.1:9090" --ip="127.0.0.1" --port=9090 --no-restore > /dev/null 2>&1 &'
              }
         }        
+        stage('Prep For Contrast Scan'){
+             steps{
+               sh 'zip -r WebApplication.zip WebApplication/bin'
+             }
+        }   
+        stage('Contrast Scan'){
+             steps{
+               sh 'contrast-cli  --scan WebApplication.zip --api_key "tN068mjN8xtZPyIHB5jXPg8rm1hRDxxE" --authorization "ZGF2aWQubXVsbGFsbHlAY29udHJhc3RzZWN1cml0eS5jb206OU1PTDNPWlpWUEg1MUxLSw==" --organization_id "c5f79c46-7c74-45a0-b4c4-565da52827fa
+"--host "teamserver-staging.contsec.com" --project_name DavidMNetCorePipeline1 --language DOTNET --wait_for_scan'
+             }
+        }
     }
 }
