@@ -40,10 +40,8 @@ pipeline {
         }        
         stage('Prep For Contrast Scan'){
              steps{
-               sh 'rm WebApplication.zip'
-               sh 'cd WebApplication/bin'
-               sh 'zip -r WebApplication.zip .'
-               sh 'cp -f WebApplication.zip ../../'
+               sh 'rm -f WebApplication.zip'
+               sh 'cd WebApplication/bin ; zip -r WebApplication.zip . ; cp -f WebApplication.zip ../../'
              }
         }   
         stage('Contrast Scan'){
